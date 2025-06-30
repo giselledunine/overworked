@@ -30,7 +30,7 @@ export default function Home() {
                 <EffectComposer>
                     <DepthOfField
                         focusDistance={0}
-                        focalLength={0.002}
+                        focalLength={0.009}
                         bokehScale={5}
                     />
                 </EffectComposer>
