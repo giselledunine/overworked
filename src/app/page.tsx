@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Model } from "../../components/Gltf/ChineseGuyBaked";
+import { Model } from "../../components/Gltf/ChineseGuy2";
 import { EffectComposer, DepthOfField } from "@react-three/postprocessing";
 import { useControls } from "leva";
 import { Suspense } from "react";
