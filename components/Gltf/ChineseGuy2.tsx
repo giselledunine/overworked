@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.5.3 public/chineseGuy2.glb -o components/Gltf/ChineseGuy2
 */
 
 import * as THREE from "three";
-import React, { useEffect } from "react";
+import React, { JSX, useEffect, useRef } from "react";
 import { useGraph, useLoader } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { GLTF, SkeletonUtils } from "three-stdlib";
@@ -58,15 +58,14 @@ type GLTFResult = GLTF & {
         Ctrl_Foot_IK_Right: THREE.Bone;
         Ctrl_LegPole_IK_Right: THREE.Bone;
     };
-    materials: {};
     animations: GLTFAction[];
 };
 
 export function Model(props: JSX.IntrinsicElements["group"]) {
-    const group = React.useRef<THREE.Group>();
+    const group = useRef<THREE.Group>(null);
     const { scene, animations } = useGLTF("/chineseGuy2.glb");
     const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
-    const { nodes, materials } = useGraph(clone) as GLTFResult;
+    const { nodes } = useGraph(clone) as unknown as GLTFResult;
     const { actions } = useAnimations(animations, group);
 
     const textureChair = useLoader(TextureLoader, "bakeChair.jpg");
